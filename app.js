@@ -10,6 +10,7 @@ const admin = require('./route/admin');
 const app = express();
 // 开放静态资源文件
 app.use(express.static(path.join(__dirname,'public')));
+// app.use(express.static(path.join(__dirname,'publicSelf')));
 //  告诉express框架使用模板的所在目录
 app.set('views',path.join(__dirname,'views'));
 //告诉express框架渲染什么后缀的文件
