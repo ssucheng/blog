@@ -3,7 +3,7 @@
 
 <head>
   {{extend '../common/layout.art'}}
-  {{block main}}
+  {{block 'main'}}
       {{include '../common/header.art'}}
     <!-- /头部 -->
     <!-- 主体内容 -->

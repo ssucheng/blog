@@ -1,5 +1,5 @@
 {{extend '../common/layout.art'}}
-{{block main}}
+{{block 'main'}}
         <!-- 头部 -->
          {{include '../common/header.art'}}
         <!-- /头部 -->

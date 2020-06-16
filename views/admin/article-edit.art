@@ -1,5 +1,5 @@
    {{extend '../common/layout.art'}}
-   {{block main}}
+   {{block 'main'}}
          <!-- 头部 -->
     {{include '../common/header.art'}}
     <!-- /头部 -->
@@ -48,7 +48,7 @@
     </div>
     <!-- /主体内容 -->
    {{/block}}
-   {{block script}}
+   {{block 'script'}}
          <script src="/admin/lib/ckeditor5/ckeditor.js"></script>
     <script type="text/javascript">
     

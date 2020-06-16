@@ -1,5 +1,5 @@
 {{extend '../common/layout.art'}}
-{{block main}}
+{{block 'main'}}
      <div class="login-body">
         <div class="login-container">
             <h4 class="title">黑马程序员 - 博客管理员登录</h4>
