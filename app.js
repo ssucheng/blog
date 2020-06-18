@@ -5,9 +5,13 @@ const path = require('path');
 // 引入路由
 const home = require('./route/home');
 const admin = require('./route/admin');
-
+// 引入数据库连接文件 通过require引入是可以自动运行的
+require('./model/connect');
+// 引入user.js创建一个文档
+require('./model/user');
 // 创建网站服务器
 const app = express();
+
 // 开放静态资源文件
 app.use(express.static(path.join(__dirname,'public')));
 // app.use(express.static(path.join(__dirname,'publicSelf')));
