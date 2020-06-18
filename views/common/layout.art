@@ -13,9 +13,11 @@
 <body>
     {{block 'main'}}{{/block}}
    <!-- /删除确认弹出框 -->
-   {{block 'script'}}{{/block}}
+   
     <script src="/admin/lib/jquery/dist/jquery.min.js"></script>
     <script src="/admin/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/admin/js/comon.js"></script>
+    {{block 'script'}}{{/block}}
 </body>
 
 </html>

@@ -13,7 +13,7 @@
         <div class="login-container">
             <h4 class="title">黑马程序员 - 博客管理员登录</h4>
             <div class="login">
-                <form action="user.html">
+                <form action="/login">
                     <div class="form-group">
                         <label>邮件</label>
                         <input type="email" class="form-control" placeholder="请输入邮件地址">
@@ -31,5 +31,16 @@
     <script src="lib/jquery/dist/jquery.min.js"></script>
     <script src="lib/bootstrap/js/bootstrap.min.js"></script>
 </body>
+<script>
+    $('.form-group').submit(function(){
+        var result = {};
+        $(this).serializeArray().forEach(function(item){
+            result[item.name] = item.value;
+            return result;
+        });
+      
+    } 
+    );
 
+</script>
 </html>

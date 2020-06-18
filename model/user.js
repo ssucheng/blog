@@ -34,14 +34,14 @@ const userSchema = mongoose.Schema({
 // 创建集合
 const User = mongoose.model('User',userSchema);
 // 插入文档
- User.create({
-     username:'sucheng',
-     email:'943704372@qq.com',
-     password:45784565,
-     role:'admin',
-     state:0
- }).then(result => console.log(result))
-   .catch(result => console.log(result))
+//  User.create({
+//      username:'sucheng',
+//      email:'943704372@qq.com',
+//      password:45784565,
+//      role:'admin',
+//      state:0
+//  }).then(result => console.log(result))
+//    .catch(result => console.log(result))
  module.exports = {
      //在新特性中 User = User 可以简写成User
      User

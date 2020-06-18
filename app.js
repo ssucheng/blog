@@ -8,7 +8,7 @@ const admin = require('./route/admin');
 // 引入数据库连接文件 通过require引入是可以自动运行的
 require('./model/connect');
 // 引入user.js创建一个文档
-require('./model/user');
+// require('./model/user');
 // 创建网站服务器
 const app = express();
 
