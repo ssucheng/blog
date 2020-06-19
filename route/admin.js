@@ -44,6 +44,6 @@ admin.post('/login', async function(req, res){
         res.status(400).render('admin/err.art',{msg:'用户密码错误'});
     }
 
-    // res.send('用户登录成功');
+    
 })
 module.exports = admin;
