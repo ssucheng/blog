@@ -2,9 +2,9 @@
 {{block 'main'}}
      <div class="login-body">
         <div class="login-container">
-            <h4 class="title">黑马程序员 - 博客管理员登录</h4>
+            <h4 class="title">苏成项目练习 - 博客管理员登录</h4>
             <div class="login">
-                <form action="login" method="post" id="loginForm">
+                <form action="/admin/login" method="post" id="loginForm">
                     <div class="form-group">
                         <label>邮件</label>
                         <input name= "email" type="email" class="form-control" placeholder="请输入邮件地址">
@@ -23,20 +23,23 @@
 {{/block}}
 
  {{block 'script'}}
+ 
  <script>
-     function serializeJson(form){
-        // 定义一个空对象  存储循环出来的键值对
-        var result = {};
-        // serializeArray 方法返回一个表单提交内容的数组
-       form.serializeArray().forEach(function(item){
-            result[item.name] = item.value;
-        });
-        return result;
-     }
+     //浏览器端拦截
     $('#loginForm').submit(function(){
       var result = serializeJson($(this));
         // 阻止默认行为
         console.log(result);
+        if(result.email.trim().length == 0){
+            alert('请输入账号');
+            // 不能写return  会跳转  
+            return false
+        }else if(result.password.trim().length == 0){
+            alert('请输入密码');
+            
+            return false
+        }
+        // 阻止默认行为
        return false;
     } 
     );

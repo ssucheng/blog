@@ -1,5 +1,6 @@
 // 引用express框架
 const express = require('express');
+// cosnt 
 // 创建admin路由
 const admin = express.Router();
 // 登录路由 加上模板引擎渲染
@@ -21,4 +22,9 @@ admin.get('/user-edit',(req,res) => {
     res.render('admin/user-edit')
 });
 
+admin.post('/login', function(req, res){
+    res.send(req.body);
+    // if(!req.body) return res.sendStatus(400);
+    // res.send('welcome, '+ req.body.email);
+})
 module.exports = admin;
