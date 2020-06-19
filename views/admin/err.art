@@ -1,0 +1,15 @@
+{{extend '../common/layout.art'}}
+{{block 'script'}}
+<style>
+    .user_err{
+        height: 200px;
+        background-color: pink;
+        text-align: center;
+        font-size:30px;
+    }
+
+</style>
+{{/block}}
+{{block 'main'}}
+    <div class="user_err">{{msg}}</div>
+{{/block}}

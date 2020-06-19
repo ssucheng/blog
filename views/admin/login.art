@@ -25,24 +25,24 @@
  {{block 'script'}}
  
  <script>
-     //浏览器端拦截
-    $('#loginForm').submit(function(){
-      var result = serializeJson($(this));
-        // 阻止默认行为
-        console.log(result);
-        if(result.email.trim().length == 0){
-            alert('请输入账号');
-            // 不能写return  会跳转  
-            return false
-        }else if(result.password.trim().length == 0){
-            alert('请输入密码');
+     //浏览器端处理用户输入方式  
+    // $('#loginForm').submit(function(){
+    //   var result = serializeJson($(this));
+    //     // 阻止默认行为
+    //     console.log(result);
+    //     if(result.email.trim().length == 0){
+    //         alert('请输入账号');
+    //         // 不能写return  会跳转  
+    //         return false
+    //     }else if(result.password.trim().length == 0){
+    //         alert('请输入密码');
             
-            return false
-        }
-        // 阻止默认行为
-       return false;
-    } 
-    );
+    //         return false
+    //     }
+    //     // 阻止默认行为
+    //    return false;
+    // } 
+    // );
 
 </script>
  {{/block}}
