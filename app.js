@@ -29,7 +29,10 @@ app.set('view engine','art');
 app.engine('art',require('express-art-template'));
 
 // 配置session
-app.use(session({secret:'secret key'}));
+app.use(session({secret:'secret key',resave : true,saveUninitialized: true, cookie: {
+    maxAge: 1000 * 60 * 30, // harlf of hour   设置cookie 的失效时间
+},
+} ));
 // 解析 application/x-www-form-urlencoded   post请求
 app.use(bodyParser.urlencoded({extended: false}))
 // 解析 application/json   post请求

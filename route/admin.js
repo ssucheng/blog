@@ -16,6 +16,10 @@ admin.get('/login',(req,res) => {
 admin.get('/user',(req,res) => {
     res.render('admin/user')
 });
+// 退出登录
+admin.get('/logout',(req,res) => {
+    
+})
 admin.get('/article-edit',(req,res) => {
     res.render('admin/article-edit')
 });
