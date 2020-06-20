@@ -18,7 +18,13 @@ admin.get('/user',(req,res) => {
 });
 // 退出登录
 admin.get('/logout',(req,res) => {
-    
+    //删除session
+    req.session.destroy(function(){
+        // 删除cookie
+        res.clearCookie('connect.sid');
+        // 重定向到登录 页面
+        res.redirect('/admin/login');
+    })
 })
 admin.get('/article-edit',(req,res) => {
     res.render('admin/article-edit')
