@@ -4,6 +4,8 @@ const express = require('express');
 const path = require('path');
 // 引入中间件
 const bodyParser = require('body-parser');
+// 引入 express-session
+const session = require('express-session');
 // 引入路由
 const home = require('./route/home');
 const admin = require('./route/admin');
@@ -17,17 +19,32 @@ const app = express();
 // 开放静态资源文件
 app.use(express.static(path.join(__dirname,'public')));
 // app.use(express.static(path.join(__dirname,'publicSelf')));
+
+
 //  告诉express框架使用模板的所在目录
 app.set('views',path.join(__dirname,'views'));
 //告诉express框架渲染什么后缀的文件
 app.set('view engine','art');
 // 使用的是什么什么模板引擎
 app.engine('art',require('express-art-template'));
-// 解析 application/x-www-form-urlencoded 
+
+// 配置session
+app.use(session({secret:'secret key'}));
+// 解析 application/x-www-form-urlencoded   post请求
 app.use(bodyParser.urlencoded({extended: false}))
-// 解析 application/json
+// 解析 application/json   post请求
 app.use(bodyParser.json());
 // app.use 拦截所有请求匹配路由
+app.use('/admin',(req,res,next) => {
+    // 访问除登录页之外且没有登录信息的都要重定向到登录页
+    if(req.url != '/login' && !req.session.userName ){
+        res.redirect('login');
+    }else{
+        // 放行
+        next();
+    }
+})
+// 拦截 /home  /admin 匹配路由
 app.use('/home',home);
 app.use('/admin',admin);
 // 监听端口

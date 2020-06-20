@@ -9,7 +9,15 @@
     }
 
 </style>
+<script>
+        setTimeout(function(){
+            // console.log(1);
+            location.href = '/admin/login';
+        },2000)
+    
+    </script>
 {{/block}}
 {{block 'main'}}
     <div class="user_err">{{msg}}</div>
 {{/block}}
+

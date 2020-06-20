@@ -41,8 +41,14 @@ admin.post('/login', async function(req, res){
         // res.send(user);
         // 判断用户输入与数据库中信息是否一致
         if(isOK){
-           res.send('登录成功');
-           return
+        //    res.send('登录成功');
+        //  将用户储存在请求对象中 
+            req.session.userName = user.username;
+            // 如果登录成功 将用户名存在locals中 实现页面共享数据
+            req.app.locals.userInfo = user;
+            // 重定向到user页面
+            res.redirect('user');
+        //    return
         }else{
             res.status(400).render('admin/err.art',{msg:'用户密码错误'});
         }
