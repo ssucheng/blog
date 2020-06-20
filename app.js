@@ -38,15 +38,7 @@ app.use(bodyParser.urlencoded({extended: false}))
 // 解析 application/json   post请求
 app.use(bodyParser.json());
 // app.use 拦截所有请求匹配路由
-app.use('/admin',(req,res,next) => {
-    // 访问除登录页之外且没有登录信息的都要重定向到登录页
-    if(req.url != '/login' && !req.session.userName ){
-        res.redirect('login');
-    }else{
-        // 放行
-        next();
-    }
-})
+app.use('/admin',require('./middleware/loginGuard'));
 // 拦截 /home  /admin 匹配路由
 app.use('/home',home);
 app.use('/admin',admin);
