@@ -40,10 +40,10 @@ const User = mongoose.model('User',userSchema);
 //     // 对明文进行加密
 //     bcrypt.hash('45784565',salt,(err,pwd) => {
 //         User.create({
-//             username:'zhangjiajia',
-//             email:'1551189282@qq.com',
+//             username:'sucheng',
+//             email:'943704372@qq.com',
 //             password:pwd,
-//             role:'normal',
+//             role:'admin',
 //             state:0
 //         });
 //         // 验证

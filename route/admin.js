@@ -2,6 +2,8 @@
 const express = require('express');
 // 引入集合构造函数
 const {User} = require('../model/user');
+// 引入bcrypt 
+const bcrypt = require('bcryptjs');
 // cosnt 
 // 创建admin路由
 const admin = express.Router();
@@ -32,9 +34,13 @@ admin.post('/login', async function(req, res){
     // 查询数据库中是否有用户输入的用户信息 es6语法email：email  可以写成email
     const user =await User.findOne({email});  
     // {"state":0,"_id":"5eeb22ca5f699832b0c49b63","username":"sucheng","email":"943704372@qq.com","password":"45784565","role":"admin","__v":0}
+    // 验证加密 密文
+    const isOK = await bcrypt.compare(password,user.password)
+    // 判断用户是否存在
     if(user){
         // res.send(user);
-        if(user.password == password){
+        // 判断用户输入与数据库中信息是否一致
+        if(isOK){
            res.send('登录成功');
            return
         }else{
