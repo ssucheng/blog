@@ -2,6 +2,8 @@
 const mongoose = require('mongoose');
 // 引入bcrypt 模块
 const bcrypt = require('bcryptjs');
+// 导入模块joi模块
+const joi = require('joi');
 // 创建集合规则
 const userSchema = mongoose.Schema({
     username: {
@@ -62,7 +64,22 @@ const User = mongoose.model('User',userSchema);
 //     state:0
 // }).then(result => console.log(result))
 //   .catch(result => console.log(result))
+
+// 服务器端验证规则
+function userEditSchema(user){
+    //  验证规则
+    const schema = {
+        username: joi.string().min(2).max(20).required().error(new Error('用户名格式不正确')),
+        email: joi.string().email().required().error(new Error('邮箱格式不正确')),
+        password: joi.string().required(/^[a-zA-Z0-9]{3,30}$/).error(new Error('密码格式不正确')),
+        role:joi.string().required().error(new Error('管理员格式不正确')),
+        state:joi.number().error(new Error('状态不正确'))
+    }  
+    // validate 方法验证user是否符合验证规则
+   return joi.validate(user,schema)
+}
  module.exports = {
      //在新特性中 User = User 可以简写成User
-     User
+     User,
+     userEditSchema
  }

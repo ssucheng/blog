@@ -45,6 +45,13 @@ app.use('/admin',require('./middleware/loginGuard'));
 // 拦截 /home  /admin 匹配路由
 app.use('/home',home);
 app.use('/admin',admin);
+// 重定向汇总 
+app.use((err,req,res,next) => {
+    // 接受next传递过来的参数 就是err
+    const result = JSON.parse(err);
+    // return res.send(result);
+    res.redirect(`${result.path}?message=${result.message}`);
+})
 // 监听端口
 app.listen(80);
 console.log('网站服务器启动成功，请访问 ' + 'http://localhost/admin/login');
