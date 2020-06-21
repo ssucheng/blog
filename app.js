@@ -20,7 +20,6 @@ const app = express();
 app.use(express.static(path.join(__dirname,'public')));
 // app.use(express.static(path.join(__dirname,'publicSelf')));
 
-
 //  告诉express框架使用模板的所在目录
 app.set('views',path.join(__dirname,'views'));
 //告诉express框架渲染什么后缀的文件
@@ -37,6 +36,10 @@ app.use(session({secret:'secret key',resave : true,saveUninitialized: true, cook
 app.use(bodyParser.urlencoded({extended: false}))
 // 解析 application/json   post请求
 app.use(bodyParser.json());
+// 不添加会报错 找不到favicon.ico
+app.use('/favicon.ico',(req,res) => {
+    res.status(200);
+})
 // app.use 拦截所有请求匹配路由
 app.use('/admin',require('./middleware/loginGuard'));
 // 拦截 /home  /admin 匹配路由
@@ -44,4 +47,4 @@ app.use('/home',home);
 app.use('/admin',admin);
 // 监听端口
 app.listen(80);
-console.log('网站服务器启动成功，请访问localhoset');
+console.log('网站服务器启动成功，请访问 ' + 'http://localhost/admin/login');

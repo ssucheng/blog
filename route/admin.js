@@ -9,15 +9,17 @@ admin.get('/login',require('./admin/loginPage'));
 admin.get('/user',require('./admin/userPage'));
 // 退出登录
 admin.get('/logout',require('./admin/logout'))
+
 admin.get('/article-edit',(req,res) => {
     res.render('admin/article-edit')
 });
 admin.get('/article',(req,res) => {
     res.render('admin/article')
 });
-admin.get('/user-edit',(req,res) => {
-    res.render('admin/user-edit')
-});
-// POST请求处理
+
+// 新增用户
+admin.get('/user-edit',require('./admin/user-edit-page'));
+admin.post('/user-edit',require('./admin/user-edit-fn'))
+// 登录验证
 admin.post('/login',require('./admin/login'));
 module.exports = admin;
